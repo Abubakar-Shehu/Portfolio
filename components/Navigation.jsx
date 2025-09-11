@@ -24,7 +24,7 @@ export default function Navigation() {
     <nav className="navigation">
       <div className="nav-container">
         <div className="nav-logo">
-          <span>Portfolio</span>
+          <span>Abubakar Shehu</span>
         </div>
         <ul className="nav-menu">
           {navItems.map((item) => (

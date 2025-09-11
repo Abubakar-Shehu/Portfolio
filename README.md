@@ -1,63 +1,20 @@
-# Portfolio Template
+# Abubakar Shehu's Portfolio 
 
-A clean, modern portfolio template built with Next.js 15 and designed as a Single Page Application (SPA).
+A dynamic **software engineer** with experience in web development and back-end systems, skilled in a range of technologies such as WordPress, React, Node.js, and PostgreSQL. Possesses a strong foundation in creating and managing websites, implementing order management systems, and ensuring seamless integration of front-end and back-end components. Adept at problem-solving, software design, and collaborating in cross-functional teams to deliver robust, scalable solutions. In addition to technical expertise, brings over three years of hands-on **accounting** experience, managing full-cycle AP/AR, inventory reconciliation, and month-end close in fast-paced environments. Proficient in Excel (pivot tables, VLOOKUP/XLOOKUP), ERP systems, and audit-ready documentation, supporting both operational and software-driven financial processes.
 
 ## Features
 
 - 🎨 Clean, modern design
 - 📱 Fully responsive
 - 🚀 Built with Next.js 15
-- 🎯 SPA navigation with smooth scrolling
 - 🧩 Modular component structure
 - 💨 Optimized performance
 
-## Getting Started
-
-First, install dependencies:
-
-```bash
-pnpm install
-```
-
-Then, run the development server:
-
-```bash
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Project Structure
-
-```
-├── app/
-│   ├── layout.jsx          # Root layout
-│   └── page.jsx            # Main page with all sections
-├── components/
-│   ├── Navigation.jsx      # Navigation component
-│   └── Section.jsx        # Reusable section wrapper
-├── styles/
-│   └── globals.css        # Global styles
-└── public/                # Static assets
-```
-
-## Customization
-
-1. **Update the content**: Edit `app/page.jsx` to customize your sections
-2. **Modify styles**: Update `styles/globals.css` for custom styling
-3. **Add components**: Create new components in the `components/` directory
-4. **Update metadata**: Change title and description in `app/layout.jsx`
-
 ## Sections
 
-The template includes four main sections:
-- **Home**: Hero section with welcome message
-- **About**: Personal information and skills
-- **Projects**: Portfolio showcase
-- **Contact**: Contact information and social links
+My portfolio contains four main sections:
+- **Home**: A welcome message and Fun facts about myself 😄
+- **About**: My personal information, skills and my journey 💼
+- **Projects**: Some of my personal projects and incoming ones 📽️
+- **Contact**: Get to know me better and less professionally 🔎📱
 
-## Deployment
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
