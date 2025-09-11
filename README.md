@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Template
+
+A clean, modern portfolio template built with Next.js 15 and designed as a Single Page Application (SPA).
+
+## Features
+
+- 🎨 Clean, modern design
+- 📱 Fully responsive
+- 🚀 Built with Next.js 15
+- 🎯 SPA navigation with smooth scrolling
+- 🧩 Modular component structure
+- 💨 Optimized performance
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/
+│   ├── layout.jsx          # Root layout
+│   └── page.jsx            # Main page with all sections
+├── components/
+│   ├── Navigation.jsx      # Navigation component
+│   └── Section.jsx        # Reusable section wrapper
+├── styles/
+│   └── globals.css        # Global styles
+└── public/                # Static assets
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+1. **Update the content**: Edit `app/page.jsx` to customize your sections
+2. **Modify styles**: Update `styles/globals.css` for custom styling
+3. **Add components**: Create new components in the `components/` directory
+4. **Update metadata**: Change title and description in `app/layout.jsx`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Sections
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The template includes four main sections:
+- **Home**: Hero section with welcome message
+- **About**: Personal information and skills
+- **Projects**: Portfolio showcase
+- **Contact**: Contact information and social links
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
