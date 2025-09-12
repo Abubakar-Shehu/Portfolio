@@ -1,5 +1,6 @@
 import Navigation from '../components/Navigation';
 import Section from '../components/Section';
+import WorkMap from '../components/WorkMap';
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
 
         <Section id="about" className="about">
           <h2>About Me</h2>
-          <p>Add your personal information, skills, and background here.</p>
+          <p>A dynamic software engineer with experience in web development and back-end systems, skilled in a range of technologies such as WordPress, React, Node.js, and PostgreSQL. Possesses a strong foundation in creating and managing websites, implementing order management systems, and ensuring seamless integration of front-end and back-end components.</p>
+          <WorkMap />
         </Section>
 
         <Section id="projects" className="projects">
