@@ -8,9 +8,9 @@ export default function WorkMap() {
   const [mapError, setMapError] = useState(false);
 
   const locations = [
-    { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, role: 'Software Engineer' },
-    { city: 'Nottingham, UK', lat: 52.9548, lng: -1.1581, role: 'Developer' },
-    { city: 'Leeds, UK', lat: 53.8008, lng: -1.5491, role: 'Tech Professional' },
+    { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, role: 'My Home' },
+    { city: 'Nottingham, UK', lat: 52.9548, lng: -1.1581, role: 'Undergraduate' },
+    { city: 'Leeds, UK', lat: 53.8008, lng: -1.5491, role: 'Accountant / Software Engineer / Cybersecurity Analyst' },
     { city: 'Edmonton, Canada', lat: 53.5461, lng: -113.4938, role: 'Software Engineer' }
   ];
 
@@ -19,9 +19,15 @@ export default function WorkMap() {
       if (!window.google || !mapRef.current) return;
 
       try {
+        // Calculate bounds to include all locations
+        const bounds = new window.google.maps.LatLngBounds();
+        locations.forEach(location => {
+          bounds.extend(new window.google.maps.LatLng(location.lat, location.lng));
+        });
+
         const map = new window.google.maps.Map(mapRef.current, {
-          zoom: 3,
-          center: { lat: 20, lng: 0 }, // Center on world view
+          zoom: 2, // Zoom out more to show all markers
+          center: { lat: 0, lng: 0 },  
           styles: [
             {
               featureType: 'all',
@@ -98,6 +104,15 @@ export default function WorkMap() {
           });
         });
 
+        // Fit map to show all markers
+        map.fitBounds(bounds);
+        
+        // Add some padding to the bounds
+        const listener = window.google.maps.event.addListener(map, 'idle', () => {
+          if (map.getZoom() > 4) map.setZoom(4); // Limit maximum zoom
+          window.google.maps.event.removeListener(listener);
+        });
+
         setMapLoaded(true);
       } catch (error) {
         console.error('Error initializing map:', error);
@@ -150,7 +165,7 @@ export default function WorkMap() {
           className="google-map"
           style={{ 
             width: '100%', 
-            height: '400px',
+            height: '500px',
             borderRadius: '8px',
             opacity: mapLoaded ? 1 : 0.7
           }}
