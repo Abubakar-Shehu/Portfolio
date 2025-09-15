@@ -2,7 +2,7 @@ import Navigation from '../components/Navigation';
 import Section from '../components/Section';
 import WorkMap from '../components/WorkMap';
 import SplashScreen from '../components/SplashScreen';
-import ContactForm from '../components/ContactForm';
+import SocialLinks from '../components/SocialLinks';
 import Projects from '../components/Projects';
 
 export default function Home() {
@@ -27,9 +27,9 @@ export default function Home() {
         </Section>
 
         <Section id="contact" className="contact">
-          <h2>Get In Touch</h2>
-          <p>Ready to work together or just want to chat? I'd love to hear from you!</p>
-          <ContactForm />
+          <h2>Connect With Me</h2>
+          <p>Let's connect and stay in touch! Follow me on social media.</p>
+          <SocialLinks />
         </Section>
       </main>
     </div>

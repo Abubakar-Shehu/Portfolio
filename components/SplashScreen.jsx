@@ -33,7 +33,6 @@ export default function SplashScreen() {
         <h1>HELLO, I'M ABUBAKAR.</h1>
         <p>WELCOME TO MY DIGITAL<br/>SPACE.</p>
         <p>EXPLORE MY WORLD OF CREATION AND CURIOSITY</p>
-        {/* <button className="enter-btn">Enter Portfolio</button> */}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ export default function WorkMap() {
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const locations = [
     { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, role: 'My Home' },
@@ -15,6 +16,14 @@ export default function WorkMap() {
   ];
 
   useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const initMap = () => {
       if (!window.google || !mapRef.current) return;
 
@@ -132,6 +141,11 @@ export default function WorkMap() {
     } else {
       initMap();
     }
+    
+    // Cleanup resize listener
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   if (mapError) {
@@ -165,7 +179,7 @@ export default function WorkMap() {
           className="google-map"
           style={{ 
             width: '100%', 
-            height: '500px',
+            height: isMobile ? '300px' : '500px',
             borderRadius: '8px',
             opacity: mapLoaded ? 1 : 0.7
           }}
