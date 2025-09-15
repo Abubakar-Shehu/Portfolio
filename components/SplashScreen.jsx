@@ -2,8 +2,7 @@ import React from "react";
 import "../styles/SplashScreen.css";
 
 const hobbies = [
-  { icon: "🎸", label: "Guitar" },
-  { icon: "♟️", label: "Chess" },
+  { icon: "⚽", label: "Soccer" },
   { icon: "🎮", label: "Gaming" },
   { icon: "📚", label: "Reading" },
   { icon: "💻", label: "Coding" },

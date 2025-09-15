@@ -63,38 +63,42 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Separate section for Proxy Server */}
-      <div className="server-section">
-        <h3 className="server-title">Infrastructure & Tools</h3>
-        <div className="server-card">
-          <div className="server-icon">
-            <span>🖥️</span>
+      {/* Skills and Technologies Section */}
+      <div className="skills-section">
+        <h3 className="skills-title">Skills & Technologies</h3>
+        <div className="skills-grid">
+          <div className="skill-category">
+            <h4 className="category-title">Frontend</h4>
+            <div className="skill-items">
+              <span className="skill-item">HTML</span>
+              <span className="skill-item">CSS</span>
+              <span className="skill-item">JavaScript</span>
+              <span className="skill-item">React</span>
+              <span className="skill-item">Next.js</span>
+            </div>
           </div>
-          <div className="server-content">
-            <h4 className="server-name">Proxy Server</h4>
-            <p className="server-description">
-              Custom proxy server built to support and run various projects. 
-              Handles routing, load balancing, and provides a centralized infrastructure solution.
-            </p>
-            <div className="server-links">
-              <a 
-                href="https://github.com/Abubakar-Shehu/Server" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="server-link"
-              >
-                <span>📁</span>
-                View on GitHub
-              </a>
-              <a 
-                href="https://server-abu.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="server-link"
-              >
-                <span>🌐</span>
-                Live Demo
-              </a>
+          
+          <div className="skill-category">
+            <h4 className="category-title">Backend</h4>
+            <div className="skill-items">
+              <span className="skill-item">Express</span>
+              <span className="skill-item">EJS</span>
+              <span className="skill-item">C#</span>
+            </div>
+          </div>
+          
+          <div className="skill-category">
+            <h4 className="category-title">Database</h4>
+            <div className="skill-items">
+              <span className="skill-item">PostgreSQL</span>
+              <span className="skill-item">MSSQL</span>
+            </div>
+          </div>
+          
+          <div className="skill-category">
+            <h4 className="category-title">Tools</h4>
+            <div className="skill-items">
+              <span className="skill-item">Git</span>
             </div>
           </div>
         </div>

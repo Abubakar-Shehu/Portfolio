@@ -16,7 +16,7 @@ export default function Home() {
 
         <Section id="about" className="about">
           <h2>About Me</h2>
-          <p>A dynamic software engineer with experience in web development and back-end systems, skilled in a range of technologies such as WordPress, React, Node.js, and PostgreSQL. Possesses a strong foundation in creating and managing websites, implementing order management systems, and ensuring seamless integration of front-end and back-end components.</p>
+          <p>A dynamic software engineer with experience in web development and back-end systems, skilled in a range of technologies such as Express, React, Node.js, MSSQL and PostgreSQL. Possesses a strong foundation in creating and managing websites, implementing order management systems, and ensuring seamless integration of front-end and back-end components.</p>
           <WorkMap />
         </Section>
 
