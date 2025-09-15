@@ -88,6 +88,11 @@ a {
   gap: 2rem;
 }
 
+/* Hide mobile menu by default on desktop */
+.mobile-menu {
+  display: none;
+}
+
 /* Mobile menu button */
 .mobile-menu-button {
   display: none;
@@ -373,6 +378,7 @@ html {
   }
 
   .mobile-menu {
+    display: flex;
     position: absolute;
     top: 100%;
     left: 0;
