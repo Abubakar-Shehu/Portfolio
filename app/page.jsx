@@ -1,6 +1,9 @@
 import Navigation from '../components/Navigation';
 import Section from '../components/Section';
 import WorkMap from '../components/WorkMap';
+import SplashScreen from '../components/SplashScreen';
+import ContactForm from '../components/ContactForm';
+import Projects from '../components/Projects';
 
 export default function Home() {
   return (
@@ -8,8 +11,7 @@ export default function Home() {
       <Navigation />
       <main className="main-content">
         <Section id="home" className="hero">
-          <h1>Welcome to My Portfolio</h1>
-          <p>This is your clean portfolio template. Start building your amazing portfolio!</p>
+          <SplashScreen />
         </Section>
 
         <Section id="about" className="about">
@@ -20,12 +22,14 @@ export default function Home() {
 
         <Section id="projects" className="projects">
           <h2>My Projects</h2>
-          <p>Showcase your work and projects here.</p>
+          <p>Explore my portfolio of web applications and development projects.</p>
+          <Projects />
         </Section>
 
         <Section id="contact" className="contact">
           <h2>Get In Touch</h2>
-          <p>Add your contact information and social links here.</p>
+          <p>Ready to work together or just want to chat? I'd love to hear from you!</p>
+          <ContactForm />
         </Section>
       </main>
     </div>

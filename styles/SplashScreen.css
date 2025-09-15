@@ -1,0 +1,186 @@
+.splash-bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.splash-hero {
+  z-index: 2;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem 4rem;
+  border-radius: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+  border: 6px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.splash-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.splash-hero p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.floating-icon {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.8;
+  animation: floatAnim 6s ease-in-out infinite alternate;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Position each icon around the profile picture */
+.icon-0 {
+  top: 15%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.icon-1 {
+  top: 20%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.icon-2 {
+  bottom: 25%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.icon-3 {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 3s;
+}
+
+.icon-4 {
+  top: 25%;
+  right: 35%;
+  animation-delay: 4s;
+}
+
+.icon-5 {
+  bottom: 15%;
+  left: 45%;
+  animation-delay: 5s;
+}
+
+@keyframes floatAnim {
+  from {
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    transform: translateY(-30px) scale(1.13);
+  }
+}
+
+/* Button (optional) */
+.enter-btn {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: #00adb5;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 173, 181, 0.19);
+  transition: background 0.2s;
+}
+
+.enter-btn:hover {
+  background: #393e46;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .splash-hero {
+    padding: 2rem 2.5rem;
+    margin: 1rem;
+    max-width: 90%;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .splash-hero h1 {
+    font-size: 2rem;
+  }
+
+  .splash-hero p {
+    font-size: 1rem;
+  }
+
+  .floating-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-hero {
+    padding: 1.5rem 2rem;
+    max-width: 95%;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .splash-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .splash-hero p {
+    font-size: 0.9rem;
+  }
+
+  .floating-icon {
+    font-size: 1.8rem;
+  }
+}

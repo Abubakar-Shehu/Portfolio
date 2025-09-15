@@ -6,11 +6,24 @@ export default function DynamicFavicon() {
   useEffect(() => {
     // List of your personal pictures
     const personalPics = [
+      // Original JPG files
       '/personal-pics/faces/IMG_0164.JPG',
       '/personal-pics/faces/IMG_0227.JPG', 
       '/personal-pics/faces/IMG_0232.JPG',
       '/personal-pics/formal/IMG_0436.JPG',
-      '/personal-pics/formal/IMG_0438.JPG'
+      '/personal-pics/formal/IMG_0438.JPG',
+      // Converted HEIC to JPG files
+      '/personal-pics/faces/IMG_0031.jpg',
+      '/personal-pics/faces/IMG_0358.jpg',
+      '/personal-pics/faces/IMG_0359.jpg',
+      '/personal-pics/faces/IMG_0360.jpg',
+      '/personal-pics/faces/IMG_0361.jpg',
+      '/personal-pics/faces/IMG_0362.jpg',
+      '/personal-pics/faces/IMG_0363 2.jpg',
+      '/personal-pics/formal/IMG_0248.jpg',
+      '/personal-pics/formal/IMG_0251.jpg',
+      '/personal-pics/formal/IMG_0255.jpg',
+      '/personal-pics/formal/IMG_0297.jpg'
     ];
 
     // Function to set favicon
