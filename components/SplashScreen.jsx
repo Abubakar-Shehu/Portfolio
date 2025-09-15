@@ -26,7 +26,7 @@ export default function SplashScreen() {
 
       <div className="splash-hero">
         <img
-          src="/personal-pics/faces/IMG_0362.JPG"
+          src="/personal-pics/faces/IMG_0359.jpg"
           alt="Abubakar Shehu"
           className="profile-img"
         />

@@ -15,6 +15,15 @@ export async function POST(request) {
       );
     }
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Please enter a valid email address' },
+        { status: 400 }
+      );
+    }
+
     // Create email content
     const emailContent = `
 New message from your portfolio contact form:
@@ -30,8 +39,19 @@ ${message}
 This message was sent from your portfolio website at ${new Date().toLocaleString()}.
     `.trim();
 
+    // Check if Resend API key is properly configured
+    const resendApiKey = process.env.RESEND_API_KEY;
+    
+    if (!resendApiKey || resendApiKey.length < 20) {
+      console.error('Resend API key is missing or invalid:', resendApiKey ? 'Key too short' : 'No key found');
+      return NextResponse.json(
+        { error: 'Email service not configured properly' },
+        { status: 500 }
+      );
+    }
+
     // Send email using Resend
-    if (process.env.RESEND_API_KEY) {
+    try {
       const { data, error } = await resend.emails.send({
         from: 'Portfolio Contact Form <onboarding@resend.dev>',
         to: ['Shehu.lanre.a@gmail.com'],
@@ -41,34 +61,31 @@ This message was sent from your portfolio website at ${new Date().toLocaleString
       });
 
       if (error) {
-        console.error('Resend error:', error);
+        console.error('Resend API error:', error);
         return NextResponse.json(
-          { error: 'Failed to send email' },
+          { error: `Email service error: ${error.message || 'Unknown error'}` },
           { status: 500 }
         );
       }
 
       console.log('Email sent successfully:', data);
-    } else {
-      // Fallback: log the submission if no API key is configured
-      console.log('Contact form submission (no email sent):', {
-        name,
-        email,
-        subject,
-        message,
-        timestamp: new Date().toISOString()
-      });
-    }
+      return NextResponse.json(
+        { message: 'Message sent successfully' },
+        { status: 200 }
+      );
 
-    return NextResponse.json(
-      { message: 'Message sent successfully' },
-      { status: 200 }
-    );
+    } catch (resendError) {
+      console.error('Resend service error:', resendError);
+      return NextResponse.json(
+        { error: `Email service error: ${resendError.message}` },
+        { status: 500 }
+      );
+    }
 
   } catch (error) {
     console.error('Error processing contact form:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: `Server error: ${error.message}` },
       { status: 500 }
     );
   }
