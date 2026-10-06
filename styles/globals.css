@@ -167,6 +167,7 @@ a {
 .main-content {
   margin-top: 80px;
   /* Account for fixed navigation */
+  padding-bottom: 2rem;
 }
 
 /* Smooth scrolling */
@@ -268,6 +269,9 @@ html {
 
 .contact {
   background: #f8f9fa;
+  /* Extra space so Contact can scroll fully under the fixed nav */
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
 }
 
 /* Work Map Styles */
