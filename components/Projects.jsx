@@ -1,28 +1,28 @@
 export default function Projects() {
   const projects = [
     {
-      name: "Premier League Statistics 2025/2025",
+      name: "Premier League Statistics 2025/2026",
       url: "https://prem-stats.vercel.app",
-      description: "This is a personal project that I built to track the statistics of the Premier League 2025/2026 season. I am a big football fan so this was a fun & personal project to build.",
-      image: "/project_pics/prem-stats.jpg" // Placeholder for image
+      description: "A personal project that tracks Premier League 2025/2026 season statistics. Built as a football fan who wanted a clearer view of the game.",
+      image: "/project_pics/prem-stats.jpg"
     },
     {
       name: "Tinyapp",
       url: "https://tinyapp-mu.vercel.app",
-      description: "This is an app that allows you to create a tiny URL for your links. It is a simple and easy to use app that allows you to create a tiny URL for your links.",
-      image: "/project_pics/tinyapp.jpg" // Placeholder for image
+      description: "A simple URL shortener that lets you create and manage tiny links for longer URLs.",
+      image: "/project_pics/tinyapp.jpg"
     },
     {
       name: "Wiki-map",
       url: "https://wiki-map-bam.vercel.app",
-      description: "This is an app that allows you to create markers on maps of major cities in the world.",
-      image: "/project_pics/wiki-maps.jpg" // Placeholder for image
+      description: "An interactive map app for creating markers on major cities around the world.",
+      image: "/project_pics/wiki-maps.jpg"
     },
     {
       name: "Tweeter",
-      url: "#", // No URL provided, you can add it later
-      description: "This is a simple Twitter clone that allows you to create tweets and view them. It is a simple and easy to use app that allows you to create tweets and view them.",
-      image: "/project_pics/tweeter.jpg" // Placeholder for image
+      url: "#",
+      description: "A simple Twitter clone for composing tweets and browsing a feed. Coming soon.",
+      image: "/project_pics/tweeter.jpg"
     }
   ];
 
@@ -48,15 +48,18 @@ export default function Projects() {
               <p className="project-description">{project.description}</p>
               
               <div className="project-links">
-                <a 
-                  href={project.url} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  disabled={project.url === "#"}
-                >
-                  {project.url === "#" ? "Coming Soon" : "View Project"}
-                </a>
+                {project.url === "#" ? (
+                  <span className="project-link project-link-disabled">Coming Soon</span>
+                ) : (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link"
+                  >
+                    View Project
+                  </a>
+                )}
               </div>
             </div>
           </div>
