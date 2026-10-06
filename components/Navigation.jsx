@@ -9,6 +9,23 @@ const navItems = [
   { id: 'contact', label: 'Contact' }
 ];
 
+function getNavOffset() {
+  return document.querySelector('.navigation')?.offsetHeight ?? 80;
+}
+
+function scrollToSectionId(sectionId) {
+  const element = document.getElementById(sectionId);
+  if (!element) return;
+
+  const top =
+    element.getBoundingClientRect().top + window.scrollY - getNavOffset();
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: 'smooth'
+  });
+}
+
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,15 +34,14 @@ export default function Navigation() {
     const sectionIds = navItems.map((item) => item.id);
 
     const updateActiveSection = () => {
-      const navOffset = 100;
+      const navOffset = getNavOffset() + 20;
       let current = sectionIds[0];
 
       for (const id of sectionIds) {
         const element = document.getElementById(id);
         if (!element) continue;
 
-        const top = element.getBoundingClientRect().top;
-        if (top - navOffset <= 0) {
+        if (element.getBoundingClientRect().top - navOffset <= 0) {
           current = id;
         }
       }
@@ -43,41 +59,32 @@ export default function Navigation() {
     };
   }, []);
 
-  const scrollToSection = (sectionId) => {
+  const handleNavClick = (event, sectionId) => {
+    event.preventDefault();
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
-
-    const element = document.getElementById(sectionId);
-    if (!element) return;
-
-    const navHeight = document.querySelector('.navigation')?.offsetHeight ?? 80;
-    const top = element.getBoundingClientRect().top + window.scrollY - navHeight;
-
-    window.scrollTo({
-      top: Math.max(0, top),
-      behavior: 'smooth'
-    });
+    scrollToSectionId(sectionId);
   };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((open) => !open);
   };
 
   return (
     <nav className="navigation">
       <div className="nav-container">
         <div className="nav-logo">
-          <button
-            type="button"
+          <a
+            href="#home"
             className="nav-logo-button"
-            onClick={() => scrollToSection('home')}
-            aria-label="Go to home"
+            onClick={(event) => handleNavClick(event, 'home')}
           >
             Abubakar Shehu
-          </button>
+          </a>
         </div>
 
         <button
+          type="button"
           className="mobile-menu-button"
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
@@ -93,13 +100,13 @@ export default function Navigation() {
         <ul className="nav-menu desktop-menu">
           {navItems.map((item) => (
             <li key={item.id}>
-              <button
-                type="button"
+              <a
+                href={`#${item.id}`}
                 className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(event) => handleNavClick(event, item.id)}
               >
                 {item.label}
-              </button>
+              </a>
             </li>
           ))}
         </ul>
@@ -107,13 +114,13 @@ export default function Navigation() {
         <ul className={`nav-menu mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
           {navItems.map((item) => (
             <li key={item.id}>
-              <button
-                type="button"
+              <a
+                href={`#${item.id}`}
                 className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => scrollToSection(item.id)}
+                onClick={(event) => handleNavClick(event, item.id)}
               >
                 {item.label}
-              </button>
+              </a>
             </li>
           ))}
         </ul>

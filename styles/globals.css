@@ -90,6 +90,8 @@ a {
   padding: 0;
   cursor: pointer;
   font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .nav-menu {
@@ -150,6 +152,9 @@ a {
   cursor: pointer;
   transition: color 0.3s ease;
   padding: 0.5rem 0;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
 }
 
 .nav-link:hover,
@@ -263,8 +268,6 @@ html {
 
 .contact {
   background: #f8f9fa;
-  min-height: calc(100vh - 80px);
-  align-items: center;
 }
 
 /* Work Map Styles */
@@ -444,8 +447,7 @@ html {
     scroll-margin-top: 70px;
   }
 
-  .section.hero,
-  .section.contact {
+  .section.hero {
     min-height: calc(100vh - 70px);
   }
 
