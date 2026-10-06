@@ -2,41 +2,65 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+const locations = [
+  { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, role: 'My Home' },
+  { city: 'Nottingham, UK', lat: 52.9548, lng: -1.1581, role: 'Undergraduate' },
+  { city: 'Leeds, UK', lat: 53.8008, lng: -1.5491, role: 'Accountant / Software Engineer / Cybersecurity Analyst' },
+  { city: 'Edmonton, Canada', lat: 53.5461, lng: -113.4938, role: 'Software Engineer' }
+];
+
+function LocationList() {
+  return (
+    <div className="location-details">
+      {locations.map((location) => (
+        <div key={location.city} className="location-item">
+          <div className="location-marker-small"></div>
+          <div className="location-info">
+            <span className="location-city">{location.city}</span>
+            <span className="location-role">{location.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function WorkMap() {
   const mapRef = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapError, setMapError] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
-  const locations = [
-    { city: 'Lagos, Nigeria', lat: 6.5244, lng: 3.3792, role: 'My Home' },
-    { city: 'Nottingham, UK', lat: 52.9548, lng: -1.1581, role: 'Undergraduate' },
-    { city: 'Leeds, UK', lat: 53.8008, lng: -1.5491, role: 'Accountant / Software Engineer / Cybersecurity Analyst' },
-    { city: 'Edmonton, Canada', lat: 53.5461, lng: -113.4938, role: 'Software Engineer' }
-  ];
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const hasApiKey = Boolean(apiKey && apiKey !== 'your_google_maps_api_key_here');
 
   useEffect(() => {
-    // Check if mobile on mount and resize
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
+    // Skip Google Maps when no valid API key is configured
+    if (!hasApiKey) {
+      setMapError(true);
+      return () => {
+        window.removeEventListener('resize', checkMobile);
+      };
+    }
+
     const initMap = () => {
       if (!window.google || !mapRef.current) return;
 
       try {
-        // Calculate bounds to include all locations
         const bounds = new window.google.maps.LatLngBounds();
-        locations.forEach(location => {
+        locations.forEach((location) => {
           bounds.extend(new window.google.maps.LatLng(location.lat, location.lng));
         });
 
         const map = new window.google.maps.Map(mapRef.current, {
-          zoom: 2, // Zoom out more to show all markers
-          center: { lat: 0, lng: 0 },  
+          zoom: 2,
+          center: { lat: 0, lng: 0 },
           styles: [
             {
               featureType: 'all',
@@ -81,8 +105,7 @@ export default function WorkMap() {
           }
         });
 
-        // Add markers for each location
-        locations.forEach((location, index) => {
+        locations.forEach((location) => {
           const marker = new window.google.maps.Marker({
             position: { lat: location.lat, lng: location.lng },
             map: map,
@@ -98,7 +121,6 @@ export default function WorkMap() {
             animation: window.google.maps.Animation.DROP
           });
 
-          // Add info window
           const infoWindow = new window.google.maps.InfoWindow({
             content: `
               <div style="padding: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
@@ -113,12 +135,10 @@ export default function WorkMap() {
           });
         });
 
-        // Fit map to show all markers
         map.fitBounds(bounds);
-        
-        // Add some padding to the bounds
+
         const listener = window.google.maps.event.addListener(map, 'idle', () => {
-          if (map.getZoom() > 4) map.setZoom(4); // Limit maximum zoom
+          if (map.getZoom() > 4) map.setZoom(4);
           window.google.maps.event.removeListener(listener);
         });
 
@@ -129,10 +149,9 @@ export default function WorkMap() {
       }
     };
 
-    // Load Google Maps script if not already loaded
     if (!window.google) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
       script.async = true;
       script.defer = true;
       script.onload = initMap;
@@ -141,31 +160,22 @@ export default function WorkMap() {
     } else {
       initMap();
     }
-    
-    // Cleanup resize listener
+
     return () => {
       window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [apiKey, hasApiKey]);
 
-  if (mapError) {
+  if (mapError || !hasApiKey) {
     return (
       <div className="work-map-container">
         <h3>My Work Journey</h3>
-        <div className="map-error">
-          <p>Unable to load map. Please check your Google Maps API key.</p>
-        </div>
-        <div className="location-details">
-          {locations.map((location, index) => (
-            <div key={index} className="location-item">
-              <div className="location-marker-small"></div>
-              <div className="location-info">
-                <span className="location-city">{location.city}</span>
-                <span className="location-role">{location.role}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        <p className="map-fallback-note">
+          {hasApiKey
+            ? 'Unable to load the interactive map right now. Here is my journey instead:'
+            : 'Places that shaped my path:'}
+        </p>
+        <LocationList />
       </div>
     );
   }
@@ -174,35 +184,23 @@ export default function WorkMap() {
     <div className="work-map-container">
       <h3>My Work Journey</h3>
       <div className="map-wrapper">
-        <div 
-          ref={mapRef} 
+        <div
+          ref={mapRef}
           className="google-map"
-          style={{ 
-            width: '100%', 
+          style={{
+            width: '100%',
             height: isMobile ? '300px' : '500px',
             borderRadius: '8px',
             opacity: mapLoaded ? 1 : 0.7
           }}
         />
-        {!mapLoaded && !mapError && (
+        {!mapLoaded && (
           <div className="map-loading">
             <p>Loading map...</p>
           </div>
         )}
       </div>
-      
-      {/* Location details */}
-      <div className="location-details">
-        {locations.map((location, index) => (
-          <div key={index} className="location-item">
-            <div className="location-marker-small"></div>
-            <div className="location-info">
-              <span className="location-city">{location.city}</span>
-              <span className="location-role">{location.role}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+      <LocationList />
     </div>
   );
 }
