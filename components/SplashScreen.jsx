@@ -1,37 +1,24 @@
 import React from "react";
 import "../styles/SplashScreen.css";
 
-const hobbies = [
-  { icon: "⚽", label: "Soccer" },
-  { icon: "🎮", label: "Gaming" },
-  { icon: "📚", label: "Reading" },
-  { icon: "💻", label: "Coding" },
-  { icon: "🎧", label: "Music" }
-];
-
 export default function SplashScreen() {
   return (
     <div className="splash-bg">
-      {/* Floating Bits & Bobs */}
-      {hobbies.map((hobby, idx) => (
-        <span
-          className={`floating-icon icon-${idx}`}
-          key={hobby.label}
-          aria-label={hobby.label}
-        >
-          {hobby.icon}
-        </span>
-      ))}
-
-      <div className="splash-hero">
+      <div className="splash-hero about-hero">
         <img
           src="/personal-pics/faces/IMG_0359.jpg"
           alt="Abubakar Shehu"
           className="profile-img"
         />
-        <h1>HELLO, I'M ABUBAKAR.</h1>
-        <p>WELCOME TO MY DIGITAL<br/>SPACE.</p>
-        <p>EXPLORE MY WORLD OF CREATION AND CURIOSITY</p>
+        <p className="hero-eyebrow">Software Engineer</p>
+        <h1>Abubakar Shehu</h1>
+        <p className="hero-brief">
+          I build web apps and back-end systems with React, Node.js, Express,
+          and PostgreSQL — and I bring a bit of accounting grit to everything I ship.
+        </p>
+        <p className="hero-brief secondary">
+          From Lagos to Nottingham, Leeds, and Edmonton — always learning, building, and exploring.
+        </p>
       </div>
     </div>
   );

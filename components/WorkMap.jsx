@@ -169,7 +169,7 @@ export default function WorkMap() {
   if (mapError || !hasApiKey) {
     return (
       <div className="work-map-container">
-        <h3>My Work Journey</h3>
+        <h3>Work history</h3>
         <p className="map-fallback-note">
           {hasApiKey
             ? 'Unable to load the interactive map right now. Here is my journey instead:'
@@ -182,7 +182,7 @@ export default function WorkMap() {
 
   return (
     <div className="work-map-container">
-      <h3>My Work Journey</h3>
+      <h3>Work history</h3>
       <div className="map-wrapper">
         <div
           ref={mapRef}
