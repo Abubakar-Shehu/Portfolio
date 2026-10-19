@@ -16,6 +16,12 @@ export default function Home() {
           <SplashScreen />
         </Section>
 
+        <Section id="projects" className="projects">
+          <h2>My Projects</h2>
+          <p>Explore my portfolio of web applications and development projects.</p>
+          <Projects />
+        </Section>
+
         <Section id="journey" className="journey">
           <h2>My Journey</h2>
           <p>
@@ -35,12 +41,6 @@ export default function Home() {
           <h2>Favourites</h2>
           <p>A few frames from travels and everyday life that I keep coming back to.</p>
           <Gallery />
-        </Section>
-
-        <Section id="projects" className="projects">
-          <h2>My Projects</h2>
-          <p>Explore my portfolio of web applications and development projects.</p>
-          <Projects />
         </Section>
 
         <Section id="contact" className="contact">
