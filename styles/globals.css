@@ -306,11 +306,11 @@ html {
   margin-bottom: 2.5rem;
 }
 
-.hobby-kicker {
-  font-size: 0.8rem;
+p.hobby-kicker {
+  font-size: 0.8rem !important;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #667eea;
+  color: #667eea !important;
   font-weight: 700;
   margin-bottom: 0.5rem !important;
   max-width: none !important;
