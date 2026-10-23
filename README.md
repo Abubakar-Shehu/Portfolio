@@ -1,12 +1,42 @@
-# Abubakar Shehu's Portfolio 
+# Abubakar Shehu's Portfolio
 
-A dynamic **software engineer** with experience in web development and back-end systems, skilled in a range of technologies such as WordPress, React, Node.js, and PostgreSQL. Possesses a strong foundation in creating and managing websites, implementing order management systems, and ensuring seamless integration of front-end and back-end components. Adept at problem-solving, software design, and collaborating in cross-functional teams to deliver robust, scalable solutions. In addition to technical expertise, brings over three years of hands-on **accounting** experience, managing full-cycle AP/AR, inventory reconciliation, and month-end close in fast-paced environments. Proficient in Excel (pivot tables, VLOOKUP/XLOOKUP), ERP systems, and audit-ready documentation, supporting both operational and software-driven financial processes.
+Personal portfolio site for **Abubakar Shehu** — a software engineer with experience in web development and back-end systems (React, Node.js, Express, PostgreSQL / MSSQL), plus a background in accounting.
+
+Built with **Next.js** and **React**.
 
 ## Sections
 
-My portfolio contains four main sections:
-- **Home**: A welcome message and Fun facts about myself 😄
-- **About**: My personal information, skills and my journey 💼
-- **Projects**: Some of my personal projects and incoming ones 📽️
-- **Contact**: Get to know me better and less professionally 🔎📱
+1. **About** — Name, photo, and a short intro
+2. **Projects** — Personal web apps, plus skills & technologies
+3. **Journey** — Work history across Lagos, Nottingham, Leeds, and Edmonton
+4. **Hobbies** — Manchester City, favourite games, and matchday energy
+5. **Favourites** — Travel and life photos
+6. **Contact** — Social links (GitHub, X, Instagram, email)
 
+## Getting started
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Optional environment
+
+Copy `env.example` to `.env.local` if you want the interactive Journey map:
+
+```bash
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
+
+Without a key, the Journey section still shows the location list.
+
+## Scripts
+
+| Command       | Description                |
+| ------------- | -------------------------- |
+| `pnpm dev`    | Start the dev server       |
+| `pnpm build`  | Production build           |
+| `pnpm start`  | Run the production server  |
+| `pnpm lint`   | Run ESLint                 |
