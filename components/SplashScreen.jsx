@@ -6,8 +6,8 @@ export default function SplashScreen() {
     <div className="splash-bg">
       <div className="splash-hero about-hero">
         <img
-          src="/personal-pics/faces/IMG_0359.jpg"
-          alt="Abubakar Shehu"
+          src="/personal-pics/travel/IMG_2318.jpg"
+          alt="Abubakar Shehu in a Manchester City jersey"
           className="profile-img"
         />
         <p className="hero-eyebrow">Software Engineer</p>
