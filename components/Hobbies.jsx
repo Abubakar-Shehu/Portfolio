@@ -2,7 +2,7 @@ export default function Hobbies() {
   const games = [
     {
       name: 'EA Sports FC',
-      note: 'My go-to for matchday vibes and career mode sessions.',
+      note: 'Career mode, Ultimate Team, and matchday sessions when City are kicking off.',
       tag: 'Football'
     },
     {
@@ -11,9 +11,9 @@ export default function Hobbies() {
       tag: 'FPS'
     },
     {
-      name: 'FIFA / FC Ultimate Team',
-      note: 'Building squads, grinding weekends, living the Premier League.',
-      tag: 'Sports'
+      name: 'Rocket League',
+      note: 'Quick games when I want something chaotic and fun between commits.',
+      tag: 'Arcade'
     }
   ];
 

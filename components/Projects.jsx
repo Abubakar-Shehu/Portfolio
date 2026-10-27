@@ -32,15 +32,11 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div key={index} className="project-card">
             <div className="project-image-container">
-              <img 
-                src={project.image} 
-                alt={project.name} 
+              <img
+                src={project.image}
+                alt={project.name}
                 className="project-image"
               />
-              <div className="image-placeholder" style={{ display: 'none' }}>
-                <span>📸</span>
-                <p>Image not found</p>
-              </div>
             </div>
             
             <div className="project-content">
@@ -102,6 +98,9 @@ export default function Projects() {
             <h4 className="category-title">Tools</h4>
             <div className="skill-items">
               <span className="skill-item">Git</span>
+              <span className="skill-item">pnpm</span>
+              <span className="skill-item">Vercel</span>
+              <span className="skill-item">Node.js</span>
             </div>
           </div>
         </div>
